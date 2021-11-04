@@ -1,6 +1,6 @@
 org: lendai
-app: test
-service: collect-from-bright-data
+app: testrepo
+service: testrepo
 
 
 plugins:
@@ -97,8 +97,8 @@ provider:
         - "*"
 
 functions:
-  collect-from-bright-data:
-    handler: lambda_function.handler
+  testrepo:
+    handler: main.print_hi
     timeout: 400
 
     vpc:
