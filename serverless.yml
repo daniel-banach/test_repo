@@ -1,0 +1,111 @@
+org: lendai
+app: test
+service: collect-from-bright-data
+
+
+plugins:
+  - serverless-pseudo-parameters
+  - serverless-stage-manager
+package:
+  individually: true
+
+
+custom:
+  pythonRequirements:
+    slim: true
+  efsAccessPoint: fsap-0c48bee838aca5ae4
+  LocalMountPath: /mnt/access
+  subnetsId1: subnet-02d0f702bcf617c49
+  securityGroup: sg-d55c50aa
+  stages:
+    - dev
+    - prod
+
+provider:
+  name: aws
+  runtime: python3.6
+  region: eu-central-1
+  environment:
+    STAGE: ${opt:stage}
+    ENDPOINT:  "kassandra-cluster.cluster-clsedohx4fhc.${self:provider.region}.rds.amazonaws.com"
+    NAME: "admin"
+    PASSWORD: "pokee007"
+    PORT: 3306
+    DB_NAME: "kassandra_${opt:stage}"
+    MNT_DIR: ${self:custom.LocalMountPath}
+
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - "logs:*"
+      Resource:
+        - "arn:aws:logs:*:*:*"
+
+    - Effect: "Allow"
+      Action:
+        - "states:*"
+      Resource:
+        - "*"
+
+    - Effect: "Allow"
+      Action:
+        - "dynamodb:*"
+      Resource:
+        - "*"
+
+    - Effect: "Allow"
+      Action:
+        - "s3:GetObject"
+        - "s3:PutObject"
+      Resource:
+        - "arn:aws:s3:::*"
+
+    - Effect: "Allow"
+      Action:
+        - "logs:CreateLogGroup"
+        - "logs:CreateLogStream"
+        - "logs:PutLogEvents"
+        - "ec2:CreateNetworkInterface"
+        - "ec2:DescribeNetworkInterfaces"
+        - "ec2:DeleteNetworkInterface"
+      Resource:
+        - "*"
+
+    - Effect: "Allow"
+      Action:
+        - "elasticfilesystem:ClientMount"
+        - "elasticfilesystem:ClientRootAccess"
+        - "elasticfilesystem:ClientWrite"
+        - "elasticfilesystem:DescribeMountTargets"
+      Resource:
+        - "*"
+
+    - Effect: "Allow"
+      Action:
+        - "lambda:InvokeFunction"
+      Resource:
+        - "*"
+    - Effect: "Allow"
+      Action:
+        - "sns:*"
+      Resource:
+        - "*"
+    - Effect: "Allow"
+      Action:
+        - "ses:*"
+      Resource:
+        - "*"
+
+functions:
+  collect-from-bright-data:
+    handler: lambda_function.handler
+    timeout: 400
+
+    vpc:
+      securityGroupIds:
+        - ${self:custom.securityGroup}
+      subnetIds:
+        - ${self:custom.subnetsId1}
+    fileSystemConfig:
+      arn: arn:aws:elasticfilesystem:${self:provider.region}:#{AWS::AccountId}:access-point/${self:custom.efsAccessPoint}
+      localMountPath: ${self:custom.LocalMountPath}
