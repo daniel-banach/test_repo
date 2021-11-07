@@ -16,7 +16,7 @@ custom:
   efsAccessPoint: fsap-0c48bee838aca5ae4
   LocalMountPath: /mnt/access
   subnetsId1: subnet-02d0f702bcf617c49
-  securityGroup: sg-d55c50aa
+  securityGroup: sg-c8eb6eb4
   stages:
     - master
     - dev
