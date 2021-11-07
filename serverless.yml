@@ -13,9 +13,9 @@ package:
 custom:
   pythonRequirements:
     slim: true
-  efsAccessPoint: fsap-0c48bee838aca5ae4
-  LocalMountPath: /mnt/access
-  subnetsId1: subnet-02d0f702bcf617c49
+  #efsAccessPoint: fsap-0c48bee838aca5ae4
+  #LocalMountPath: /mnt/access
+  subnetsId1: subnet-c28f17a8
   securityGroup: sg-c8eb6eb4
   stages:
     - master
@@ -33,7 +33,7 @@ provider:
     PASSWORD: "pokee007"
     PORT: 3306
     DB_NAME: "kassandra_${opt:stage}"
-    MNT_DIR: ${self:custom.LocalMountPath}
+    #MNT_DIR: ${self:custom.LocalMountPath}
 
   iamRoleStatements:
     - Effect: "Allow"
@@ -107,6 +107,6 @@ functions:
         - ${self:custom.securityGroup}
       subnetIds:
         - ${self:custom.subnetsId1}
-    fileSystemConfig:
-      arn: arn:aws:elasticfilesystem:${self:provider.region}:#{AWS::AccountId}:access-point/${self:custom.efsAccessPoint}
-      localMountPath: ${self:custom.LocalMountPath}
+    #fileSystemConfig:
+#      arn: arn:aws:elasticfilesystem:${self:provider.region}:#{AWS::AccountId}:access-point/${self:custom.efsAccessPoint}
+#      localMountPath: ${self:custom.LocalMountPath}
