@@ -1,0 +1,25 @@
+{
+  "name": "test_repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "serverless-pseudo-parameters": "^2.6.1",
+    "serverless-stage-manager": "^1.0.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-banach/test_repo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniel-banach/test_repo/issues"
+  },
+  "homepage": "https://github.com/daniel-banach/test_repo#readme"
+}
