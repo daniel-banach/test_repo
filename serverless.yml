@@ -18,6 +18,7 @@ custom:
   subnetsId1: subnet-02d0f702bcf617c49
   securityGroup: sg-d55c50aa
   stages:
+    - master
     - dev
     - prod
 
