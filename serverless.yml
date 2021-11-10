@@ -1,6 +1,6 @@
 org: lendai
 app: testrepo
-service: testrepo
+service: prediction-test
 
 
 plugins:
