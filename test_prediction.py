@@ -20,5 +20,6 @@ def load_features():
 def predict(event, context):
     model = load_model()
     features = load_features()
-    data = pd.DataFrame(event['data'])[features].drop(columns=['price'])
+    features = list(set(features)-set('price'))
+    data = pd.DataFrame(event['data'])[features]
     return model.predict(data)
