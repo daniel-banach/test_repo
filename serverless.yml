@@ -13,7 +13,7 @@ package:
 custom:
   pythonRequirements:
     slim: true
-  efsAccessPoint: fs-095e0546a39224f07
+  efsAccessPoint: fsap-042a04f49da47a1e9
   LocalMountPath: /mnt/access
   subnetsId1: subnet-9e0cd6d2
   securityGroup: sg-c8eb6eb4
