@@ -99,7 +99,7 @@ provider:
 
 functions:
   testrepo:
-    handler: main.print_hi
+    handler: test_prediction.predict
     timeout: 400
 
     vpc:
