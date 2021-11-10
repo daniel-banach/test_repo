@@ -107,6 +107,6 @@ functions:
         - ${self:custom.securityGroup}
       subnetIds:
         - ${self:custom.subnetsId1}
-    #fileSystemConfig:
-#      arn: arn:aws:elasticfilesystem:${self:provider.region}:#{AWS::AccountId}:access-point/${self:custom.efsAccessPoint}
-#      localMountPath: ${self:custom.LocalMountPath}
+    fileSystemConfig:
+      arn: arn:aws:elasticfilesystem:${self:provider.region}:#{AWS::AccountId}:access-point/${self:custom.efsAccessPoint}
+      localMountPath: ${self:custom.LocalMountPath}
