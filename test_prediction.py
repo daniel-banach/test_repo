@@ -14,7 +14,7 @@ def load_model():
     return model
 
 def load_features():
-    features = joblib.open(open(os.environ['MNT_DIR']+'/' +FEATURES,'rb' ))
+    features = joblib.load(open(os.environ['MNT_DIR']+'/' +FEATURES,'rb' ))
     return features
 
 def predict(event, context):
