@@ -1,5 +1,5 @@
 org: lendai
-app: testrepo
+app: prediction-test
 service: prediction-test
 
 
