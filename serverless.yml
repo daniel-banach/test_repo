@@ -33,7 +33,7 @@ provider:
     PASSWORD: "pokee007"
     PORT: 3306
     DB_NAME: "kassandra_${opt:stage}"
-    #MNT_DIR: ${self:custom.LocalMountPath}
+    MNT_DIR: ${self:custom.LocalMountPath}
 
   iamRoleStatements:
     - Effect: "Allow"
