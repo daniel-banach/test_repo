@@ -13,9 +13,9 @@ package:
 custom:
   pythonRequirements:
     slim: true
-  #efsAccessPoint: fsap-0c48bee838aca5ae4
-  #LocalMountPath: /mnt/access
-  subnetsId1: subnet-c28f17a8
+  efsAccessPoint: fs-095e0546a39224f07
+  LocalMountPath: /mnt/access
+  subnetsId1: subnet-9e0cd6d2
   securityGroup: sg-c8eb6eb4
   stages:
     - master
